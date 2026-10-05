@@ -7,6 +7,8 @@
 
 **Sector:** insurance · **Role:** end-to-end (framing, data, model, production, monitoring) · **Stack:** LightGBM (Tweedie) · Python · BigQuery · GCP (Vertex AI Workbench, Cloud Composer, Cloud Storage) · **Status:** in production, monthly cadence
 
+*Writeup prepared October 2026; the implementation is client property.*
+
 The client owns the business metrics and internal identifiers. This case study
 describes how the problem was framed, how the model was built, and how the system
 reasons, without publishing client data, feature names, or exact performance
@@ -21,7 +23,7 @@ predictive features are described by concept and group rather than by column nam
 2. [Choosing Tweedie for premium prediction](#2-choosing-tweedie-for-premium-prediction)
 3. [The baseline that made the model earn its place](#3-the-baseline-that-made-the-model-earn-its-place)
 4. [Model comparison](#4-model-comparison)
-5. [Feature engineering: 8 features, one dominant signal](#5-feature-engineering-8-features-one-dominant-signal)
+5. [Feature engineering: ~10 features, one dominant signal](#5-feature-engineering-10-features-one-dominant-signal)
 6. [Feature importance and the architectural ceiling](#6-feature-importance-and-the-architectural-ceiling)
 7. [Validation strategy](#7-validation-strategy)
 8. [Segmentation: where the model actually adds value](#8-segmentation-where-the-model-actually-adds-value)
@@ -116,7 +118,7 @@ predictions by construction.
 
 ## 5. Feature engineering: ~10 features, one dominant signal
 
-The final feature set is small on purpose. Eight features, all computable
+The final feature set is small on purpose. Around 10 features, all computable
 directly from the client-level view of the portfolio without additional derived
 tables.
 
